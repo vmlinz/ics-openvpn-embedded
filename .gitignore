@@ -81,3 +81,6 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 
+ics-openvpn-complete/libs/
+ics-openvpn-complete/obj/
+ics-openvpn-complete/ovpnlibs/
