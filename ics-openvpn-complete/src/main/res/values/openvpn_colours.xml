@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012-2014 Arne Schwabe
+  ~ Distributed under the GNU GPL v2 with additional terms. For full terms see the file doc/LICENSE.txt
+  -->
+
+<resources>
+    <!-- Indigo -->
+    <!-- OpenVPN colours #203155, #C66D0D -->
+    <color name="openvpn_primary">#3F51B5</color>      <!--500-->
+    <color name="openvpn_primary_dark">#303F9F</color> <!--700-->
+    <color name="openvpn_accent">#FFA726</color>       <!-- Orange 400 -->
+    <color name="openvpn_gelb">#ffff00</color>
+    <color name="openvpn_rot">#ff0000</color>
+
+    <color name="openvpn_switchbar">@android:color/darker_gray</color>
+
+
+    <color name="openvpn_background_tab_pressed">#1AFFFFFF</color>
+
+</resources>
