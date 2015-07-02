@@ -17,7 +17,6 @@ import android.os.Environment;
 import android.provider.OpenableColumns;
 import android.security.KeyChain;
 import android.security.KeyChainAliasCallback;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.view.Menu;
@@ -32,6 +31,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import junit.framework.Assert;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -111,7 +112,7 @@ public class ConfigConverter extends Activity implements FileSelectCallback, Vie
     }
 
     @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
+    protected void onSaveInstanceState(@NotNull Bundle outState) {
         super.onSaveInstanceState(outState);
         if (mResult != null)
             outState.putSerializable(VPNPROFILE, mResult);

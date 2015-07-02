@@ -12,10 +12,11 @@ import android.net.LocalSocket;
 import android.net.LocalSocketAddress;
 import android.os.ParcelFileDescriptor;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
 import android.util.Log;
 
 import junit.framework.Assert;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
@@ -64,7 +65,7 @@ public class OpenVpnManagementThread implements Runnable, OpenVPNManagement {
 
     }
 
-    public boolean openManagementInterface(@NonNull Context c) {
+    public boolean openManagementInterface(@NotNull Context c) {
         // Could take a while to open connection
         int tries = 8;
 

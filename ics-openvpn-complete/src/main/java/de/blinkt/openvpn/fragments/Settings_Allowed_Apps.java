@@ -6,7 +6,6 @@
 package de.blinkt.openvpn.fragments;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -15,18 +14,13 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.CompoundButton;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -41,7 +35,7 @@ import de.blinkt.openvpn.core.ProfileManager;
 /**
  * Created by arne on 16.11.14.
  */
-public class Settings_Allowed_Apps extends Fragment implements AdapterView.OnItemClickListener, CompoundButton.OnCheckedChangeListener, View.OnClickListener {
+public class Settings_Allowed_Apps extends Fragment implements AdapterView.OnItemClickListener, CompoundButton.OnCheckedChangeListener {
     private ListView mListView;
     private VpnProfile mProfile;
     private TextView mDefaultAllowTextView;
@@ -51,11 +45,6 @@ public class Settings_Allowed_Apps extends Fragment implements AdapterView.OnIte
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         AppViewHolder avh = (AppViewHolder) view.getTag();
         avh.checkBox.toggle();
-    }
-
-    @Override
-    public void onClick(View v) {
-
     }
 
     static class AppViewHolder {
@@ -107,67 +96,16 @@ public class Settings_Allowed_Apps extends Fragment implements AdapterView.OnIte
     }
 
 
-    class PackageAdapter extends BaseAdapter implements Filterable {
-        private Vector<ApplicationInfo> mPackages;
+    class PackageAdapter extends BaseAdapter {
+        private final List<ApplicationInfo> mPackages;
         private final LayoutInflater mInflater;
         private final PackageManager mPm;
-        private ItemFilter mFilter = new ItemFilter();
-        private Vector<ApplicationInfo> mFilteredData;
-
-
-        private class ItemFilter extends Filter {
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-
-                String filterString = constraint.toString().toLowerCase();
-
-                FilterResults results = new FilterResults();
-
-
-                int count = mPackages.size();
-                final Vector<ApplicationInfo> nlist = new Vector<>(count);
-
-                for (int i = 0; i < count; i++) {
-                    ApplicationInfo pInfo = mPackages.get(i);
-                    CharSequence appName = pInfo.loadLabel(mPm);
-
-                    if (TextUtils.isEmpty(appName))
-                        appName = pInfo.packageName;
-
-                    if (appName instanceof  String) {
-                        if (((String) appName).toLowerCase().contains(filterString))
-                                nlist.add(pInfo);
-                    } else {
-                        if (appName.toString().toLowerCase().contains(filterString))
-                            nlist.add(pInfo);
-                    }
-                }
-                results.values = nlist;
-                results.count = nlist.size();
-
-                return results;
-            }
-
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
-                mFilteredData = (Vector<ApplicationInfo>) results.values;
-                notifyDataSetChanged();
-            }
-
-        }
-
 
         PackageAdapter(Context c, VpnProfile vp) {
             mPm = c.getPackageManager();
             mProfile = vp;
-            mInflater = LayoutInflater.from(c);
-
-            mPackages = new Vector<>();
-            mFilteredData = mPackages;
-        }
-
-        private void populateList(Activity c) {
             List<ApplicationInfo> installedPackages = mPm.getInstalledApplications(PackageManager.GET_META_DATA);
+            mInflater = LayoutInflater.from(c);
 
             // Remove apps not using Internet
 
@@ -194,36 +132,29 @@ public class Settings_Allowed_Apps extends Fragment implements AdapterView.OnIte
 
             Collections.sort(apps, new ApplicationInfo.DisplayNameComparator(mPm));
             mPackages = apps;
-            mFilteredData = apps;
-            c.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    notifyDataSetChanged();
-                }
-            });
         }
 
         @Override
         public int getCount() {
-            return mFilteredData.size();
+            return mPackages.size();
         }
 
         @Override
         public Object getItem(int position) {
-            return mFilteredData.get(position);
+            return mPackages.get(position);
         }
 
         @Override
         public long getItemId(int position) {
-            return mFilteredData.get(position).packageName.hashCode();
+            return mPackages.get(position).packageName.hashCode();
         }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            AppViewHolder viewHolder = AppViewHolder.createOrRecycle(mInflater, convertView, parent);
+            AppViewHolder viewHolder = AppViewHolder.createOrRecycle(mInflater, convertView ,parent);
             convertView = viewHolder.rootView;
-            viewHolder.mInfo = mFilteredData.get(position);
-            final ApplicationInfo mInfo = mFilteredData.get(position);
+            viewHolder.mInfo = mPackages.get(position);
+            final ApplicationInfo mInfo = mPackages.get(position);
 
 
             CharSequence appName = mInfo.loadLabel(mPm);
@@ -238,11 +169,6 @@ public class Settings_Allowed_Apps extends Fragment implements AdapterView.OnIte
 
             viewHolder.checkBox.setChecked(mProfile.mAllowedAppsVpn.contains(mInfo.packageName));
             return viewHolder.rootView;
-        }
-
-        @Override
-        public Filter getFilter() {
-            return mFilter;
         }
     }
 
@@ -259,43 +185,7 @@ public class Settings_Allowed_Apps extends Fragment implements AdapterView.OnIte
         String profileUuid = getArguments().getString(getActivity().getPackageName() + ".profileUUID");
         mProfile = ProfileManager.get(getActivity(), profileUuid);
         getActivity().setTitle(getString(R.string.openvpn_edit_profile_title, mProfile.getName()));
-        setHasOptionsMenu(true);
-    }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.openvpn_allowed_apps, menu);
-
-        SearchView searchView = (SearchView) menu.findItem( R.id.openvpn_app_search_widget ).getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                mListView.setFilterText(query);
-                mListView.setTextFilterEnabled(true);
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                mListView.setFilterText(newText);
-                if (TextUtils.isEmpty(newText))
-                    mListView.setTextFilterEnabled(false);
-                else
-                    mListView.setTextFilterEnabled(true);
-
-                return true;
-            }
-        });
-        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
-                mListView.clearTextFilter();
-                mListAdapter.getFilter().filter("");
-                return false;
-            }
-        });
-
-        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
@@ -323,14 +213,6 @@ public class Settings_Allowed_Apps extends Fragment implements AdapterView.OnIte
         mListView.setAdapter(mListAdapter);
         mListView.setOnItemClickListener(this);
 
-        mListView.setEmptyView(v.findViewById(R.id.openvpn_loading_container));
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                mListAdapter.populateList(getActivity());
-            }
-        }).start();
 
         return v;
     }

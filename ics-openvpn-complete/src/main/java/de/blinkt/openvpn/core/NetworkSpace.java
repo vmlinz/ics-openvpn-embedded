@@ -6,18 +6,15 @@
 package de.blinkt.openvpn.core;
 
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import junit.framework.Assert;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.math.BigInteger;
 import java.net.Inet6Address;
-import java.util.Collection;
-import java.util.Locale;
-import java.util.PriorityQueue;
-import java.util.TreeSet;
-import java.util.Vector;
+import java.util.*;
 
 import de.blinkt.openvpn.BuildConfig;
 
@@ -41,7 +38,7 @@ public class NetworkSpace {
          *    2. smaller networks are returned as smaller
          */
         @Override
-        public int compareTo(@NonNull ipAddress another) {
+        public int compareTo(@NotNull ipAddress another) {
             int comp = getFirstAddress().compareTo(another.getFirstAddress());
             if (comp != 0)
                 return comp;
