@@ -88,7 +88,7 @@ process %w(src/main/AndroidManifest.xml) do |text|
   text.gsub!(/android:versionName=".+?"\s*/, '')
   text.gsub!(/android:versionCode=".+?"\s*/, '')
   text.gsub!(/android:installLocation=".+?"\s*/, '')
-  
+
   # Leave permissions up to the app, not the lib
   text.gsub!(/<uses-permission.+?\/>/, '')
   # Same for supports-screens
