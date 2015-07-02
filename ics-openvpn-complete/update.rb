@@ -104,6 +104,7 @@ end
 process %w(build.gradle) do |text|
   text.gsub!(/com\.android\.application/, 'com.android.library')
   text.gsub!(/mavenCentral/, 'jcenter')
+  text.gsub!(/(^android \{$)/, "\\1\n    resourcePrefix \'#{PREFIX}_\'")
 
   text
 end
