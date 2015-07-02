@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012-2014 Arne Schwabe
+  ~ Distributed under the GNU GPL v2 with additional terms. For full terms see the file doc/LICENSE.txt
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/openvpn_appbehaviour" android:key="app_behaviour">
+        <CheckBoxPreference
+                android:defaultValue="true"
+                android:key="showlogwindow"
+                android:summary="@string/openvpn_show_log_summary"
+                android:title="@string/openvpn_show_log_window"/>
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="ovpn3"
+            android:summaryOn="Use the C++ OpenVPN library"
+            android:summaryOff="Use OpenVPN 2.3"
+            android:title="OpenVPN 3 Core"/>
+
+
+        <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="restartvpnonboot"
+                android:summary="@string/openvpn_onbootrestartsummary"
+                android:title="@string/openvpn_onbootrestart"/>
+
+        <Preference
+                android:key="clearapi"
+                android:persistent="false"
+                android:title="@string/openvpn_clear_external_apps"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/openvpn_vpnbehaviour">
+        <CheckBoxPreference
+                android:defaultValue="true"
+                android:key="usesystemproxy"
+                android:summary="@string/openvpn_use_system_proxy_summary"
+                android:title="@string/openvpn_use_system_proxy"/>
+        <CheckBoxPreference
+                android:defaultValue="true"
+                android:key="netchangereconnect"
+                android:summary="@string/openvpn_netchange_summary"
+                android:title="@string/openvpn_netchange"/>
+
+
+        <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="screenoff"
+                android:summary="@string/openvpn_screenoff_summary"
+                android:title="@string/openvpn_screenoff_title"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/openvpn_device_specific" android:key="device_hacks">
+        <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="useCM9Fix"
+                android:summary="@string/openvpn_owner_fix_summary"
+                android:title="@string/openvpn_owner_fix"/>
+        <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="loadTunModule"
+                android:summary="@string/openvpn_setting_loadtun_summary"
+                android:title="@string/openvpn_setting_loadtun"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

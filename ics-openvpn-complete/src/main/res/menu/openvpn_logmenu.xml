@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012-2014 Arne Schwabe
+  ~ Distributed under the GNU GPL v2 with additional terms. For full terms see the file doc/LICENSE.txt
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+            android:id="@+id/openvpn_toggle_time"
+            android:alphabeticShortcut="t"
+            android:icon="@drawable/openvpn_ic_menu_view"
+            android:showAsAction="withText|ifRoom"
+            android:title="@string/openvpn_logview_options" />
+
+    <item
+            android:id="@+id/openvpn_clearlog"
+            android:icon="@drawable/openvpn_ic_menu_delete"
+            android:showAsAction="ifRoom|withText"
+            android:title="@string/openvpn_clear_log"
+            android:titleCondensed="@string/openvpn_clear"/>
+    <item
+            android:id="@+id/openvpn_send"
+            android:icon="@drawable/openvpn_ic_menu_share"
+            android:showAsAction="ifRoom|withText"
+            android:title="@string/openvpn_send_logfile"
+            android:titleCondensed="@string/openvpn_send"/>
+
+    <item
+            android:id="@+id/openvpn_cancel"
+            android:icon="@drawable/openvpn_ic_menu_close_clear_cancel"
+            android:showAsAction="ifRoom|withText"
+            android:title="@string/openvpn_cancel_connection_long"
+            android:titleCondensed="@string/openvpn_cancel_connection"/>
+    <item
+            android:id="@+id/openvpn_edit_vpn"
+            android:alphabeticShortcut="e"
+            android:icon="@drawable/openvpn_ic_menu_edit"
+            android:showAsAction="withText|ifRoom"
+            android:title="@string/openvpn_edit_vpn"/>
+
+</menu>

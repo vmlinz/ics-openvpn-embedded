@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012-2014 Arne Schwabe
+  ~ Distributed under the GNU GPL v2 with additional terms. For full terms see the file doc/LICENSE.txt
+  -->
+
+<resources>
+    <style name="openvpn_blinkt.baseTheme" parent="android:Theme.DeviceDefault.Light" />
+    <style name="openvpn_blinkt.common" parent="openvpn_blinkt.baseTheme" >
+        <!-- Shared between Holo and Material -->
+        <item name="android:preferenceStyle">@style/openvpn_BlinktPreferencePanel</item>
+
+    </style>
+
+    <style name="openvpn_blinkt" parent="openvpn_blinkt.common">
+    </style>
+
+    <!-- No margins or background by default. Not different for x-large screens -->
+    <style name="openvpn_BlinktPreferencePanel">
+        <item name="android:background">@color/openvpn_gelb</item>
+    </style>
+
+    <style name="openvpn_item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="openvpn_faqitem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+    </style>
+
+    <style name="openvpn_faqhead">
+        <item name="android:paddingTop">10sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <!-- <item name="android:singleLine">true</item> -->
+    </style>
+
+    <style name="openvpn_accountSetupButton">
+        <item name="android:layout_width">160sp</item>
+        <item name="android:layout_height">40sp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+    </style>
+
+    <style name="openvpn_Theme.CreateShortCut" parent="android:Theme.Holo.DialogWhenLarge" />
+
+    <style name="openvpn_logWindowStatusText">
+        <item name="android:paddingLeft">@dimen/openvpn_paddingItemsSidebarLog</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+    </style>
+
+    <style name="openvpn_logWindowStatusTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+
+</resources>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2012-2014 Arne Schwabe
+  ~ Distributed under the GNU GPL v2 with additional terms. For full terms see the file doc/LICENSE.txt
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:animateLayoutChanges="true"
+        android:id="@+id/openvpn_switchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?android:attr/actionBarSize"
+        android:background="@drawable/openvpn_bg_switchbar"
+        android:elevation="1dp"
+        android:paddingStart="@dimen/openvpn_switchbar_pad"
+        android:paddingEnd="@dimen/openvpn_switchbar_pad"
+        >
+        <Switch
+            android:id="@+id/openvpn_remote_random"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/openvpn_default_allow_text"
+            style="@android:style/TextAppearance.Medium.Inverse"
+            android:text="@string/openvpn_remote_random"
+            android:layout_toStartOf="@id/openvpn_remote_random"
+            android:layout_toLeftOf="@id/openvpn_remote_random"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_margin="@dimen/openvpn_vpn_setting_padding"
+        android:id="@+id/openvpn_connection_recycler_view"
+        android:layout_below="@id/openvpn_switchBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:verticalSpacing="@dimen/openvpn_stdpadding"
+        android:horizontalSpacing="@dimen/openvpn_stdpadding"
+        />
+
+
+    <TextView
+        android:id="@+id/openvpn_noserver_active_warning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/openvpn_white_rect"
+        android:drawableLeft="@drawable/openvpn_ic_dialog_alert"
+        android:drawablePadding="10dp"
+        android:elevation="2dp"
+        android:gravity="center_vertical"
+        android:padding="@dimen/openvpn_stdpadding"
+        android:text="@string/openvpn_remote_no_server_selected"
+        android:visibility="visible"
+        tools:visibility="gone" />
+
+    <include layout="@layout/openvpn_connection_fab" />
+
+</RelativeLayout>

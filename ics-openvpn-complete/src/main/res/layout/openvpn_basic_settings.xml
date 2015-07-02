@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012-2014 Arne Schwabe
+  ~ Distributed under the GNU GPL v2 with additional terms. For full terms see the file doc/LICENSE.txt
+  -->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:blinkt="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:padding="@dimen/openvpn_vpn_setting_padding"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="4dp" >
+
+        <TextView
+            style="@style/openvpn_item"
+            android:text="@string/openvpn_profilename"
+            android:textAppearance="?android:attr/textAppearanceSmall" 
+            />
+
+        <EditText
+            android:id="@+id/openvpn_profilename"
+            style="@style/openvpn_item"
+            android:inputType="text" />
+
+
+
+        <CheckBox
+            android:id="@+id/openvpn_lzo"
+            style="@style/openvpn_item"
+            android:text="@string/openvpn_useLZO" />
+
+        <TextView
+            style="@style/openvpn_item"
+            android:text="@string/openvpn_vpn_type"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <Spinner
+            android:id="@+id/openvpn_type"
+            style="@style/openvpn_item"
+            android:entries="@array/openvpn_vpn_types"
+            android:prompt="@string/openvpn_vpn_type" />
+
+        <LinearLayout
+            android:id="@+id/openvpn_keystore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <include layout="@layout/openvpn_keystore_selector" />
+
+            <TextView
+                style="@style/openvpn_item"
+                android:singleLine="false"
+                android:text="@string/openvpn_extracahint"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/openvpn_cacert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:visibility="visible"
+            android:visibility="gone" >
+
+            <de.blinkt.openvpn.views.FileSelectLayout
+                android:id="@+id/openvpn_caselect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                blinkt:openvpn_showClear="true"
+                blinkt:openvpn_fileTitle="@string/openvpn_ca_title" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/openvpn_certs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <de.blinkt.openvpn.views.FileSelectLayout
+                android:id="@+id/openvpn_certselect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                blinkt:openvpn_fileTitle="@string/openvpn_client_certificate_title" />
+
+            <de.blinkt.openvpn.views.FileSelectLayout
+                android:id="@+id/openvpn_keyselect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                blinkt:openvpn_certificate="false"
+                blinkt:openvpn_fileTitle="@string/openvpn_client_key_title" />
+
+            <LinearLayout
+                android:id="@+id/openvpn_key_password_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <TextView
+                    style="@style/openvpn_item"
+                    android:layout_marginLeft="8dip"
+                    android:layout_marginRight="8dip"
+                    android:text="@string/openvpn_private_key_password"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                <EditText
+                    android:id="@+id/openvpn_key_password"
+                    style="@style/openvpn_item"
+                    android:layout_marginLeft="8dip"
+                    android:layout_marginRight="8dip"
+                    android:hint="@string/openvpn_pw_query_hint"
+                    android:inputType="textPassword" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/openvpn_pkcs12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <de.blinkt.openvpn.views.FileSelectLayout
+                android:id="@+id/openvpn_pkcs12select"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                blinkt:openvpn_certificate="false"
+                blinkt:openvpn_fileTitle="@string/openvpn_client_pkcs12_title" />
+
+            <TextView
+                style="@style/openvpn_item"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                android:text="@string/openvpn_pkcs12pwquery"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <EditText
+                android:id="@+id/openvpn_pkcs12password"
+                style="@style/openvpn_item"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                android:hint="@string/openvpn_pw_query_hint"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/openvpn_userpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TextView
+                style="@style/openvpn_item"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                android:text="@string/openvpn_auth_username"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <EditText
+                android:id="@+id/openvpn_auth_username"
+                style="@style/openvpn_item"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                android:inputType="textNoSuggestions" />
+
+            <TextView
+                style="@style/openvpn_item"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                android:text="@string/openvpn_auth_pwquery"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <EditText
+                android:id="@+id/openvpn_auth_password"
+                style="@style/openvpn_item"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                android:hint="@string/openvpn_pw_query_hint"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/openvpn_statickeys"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TextView
+                style="@style/openvpn_item"
+                android:singleLine="false"
+                android:text="@string/openvpn_static_keys_info" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

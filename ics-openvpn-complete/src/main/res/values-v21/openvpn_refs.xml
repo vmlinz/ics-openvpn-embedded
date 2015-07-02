@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012-2014 Arne Schwabe
+  ~ Distributed under the GNU GPL v2 with additional terms. For full terms see the file doc/LICENSE.txt
+  -->
+
+<resources>
+    <drawable name="openvpn_ic_menu_close_clear_cancel">@drawable/openvpn_ic_close_white_24dp</drawable>
+    <drawable name="openvpn_ic_menu_share">@drawable/openvpn_ic_share_white_24dp </drawable>
+    <drawable name="openvpn_ic_menu_save">@drawable/openvpn_ic_check_white_24dp</drawable>
+    <drawable name="openvpn_ic_menu_view">@drawable/openvpn_ic_filter_list_white_24dp</drawable>
+    <drawable name="openvpn_ic_menu_delete">@drawable/openvpn_ic_delete_white_24dp</drawable>
+    <drawable name="openvpn_ic_menu_copy">@drawable/openvpn_ic_content_copy_white_24dp</drawable>
+    <drawable name="openvpn_ic_menu_delete_grey">@drawable/openvpn_ic_delete_grey600_24dp</drawable>
+
+    <drawable name="openvpn_ic_menu_edit">@drawable/openvpn_ic_edit_white_24dp</drawable>
+    <drawable name="openvpn_ic_menu_import">@drawable/openvpn_ic_archive_white_24dp</drawable>
+    <drawable name="openvpn_vpn_item_edit">@drawable/openvpn_ic_edit_grey600_24dp</drawable>
+    <drawable name="openvpn_ic_menu_add">@drawable/openvpn_ic_add_circle_outline_white_24dp</drawable>
+    <drawable name="openvpn_ic_dialog_alert">@drawable/openvpn_ic_warning_black_36dp</drawable>
+    <drawable name="openvpn_ic_menu_add_grey">@drawable/openvpn_ic_add_circle_outline_grey600_24dp</drawable>
+    <drawable name="openvpn_ic_menu_import_grey">@drawable/openvpn_ic_archive_grey600_24dp</drawable>
+    <drawable name="openvpn_ic_receipt">@drawable/openvpn_ic_receipt_white_24dp</drawable>
+
+</resources>

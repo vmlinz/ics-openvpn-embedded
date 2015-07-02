@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2012-2014 Arne Schwabe
+  ~ Distributed under the GNU GPL v2 with additional terms. For full terms see the file doc/LICENSE.txt
+  -->
+
+<resources>
+     <declare-styleable name="openvpn_FileSelectLayout">
+       <attr name="openvpn_fileTitle" format="string|reference" />
+      <attr name="openvpn_certificate" format="boolean" />
+<!--     <attr name="openvpn_taskid" format="integer" /> -->
+       <attr name="openvpn_showClear" format="boolean" />
+   </declare-styleable>
+
+    <declare-styleable name="openvpn_PagerSlidingTabStrip">
+        <attr name="openvpn_pstsIndicatorColor" format="color" />
+        <attr name="openvpn_pstsUnderlineColor" format="color" />
+        <attr name="openvpn_pstsDividerColor" format="color" />
+        <attr name="openvpn_pstsDividerWidth" format="dimension" />
+        <attr name="openvpn_pstsIndicatorHeight" format="dimension" />
+        <attr name="openvpn_pstsUnderlineHeight" format="dimension" />
+        <attr name="openvpn_pstsDividerPadding" format="dimension" />
+        <attr name="openvpn_pstsTabPaddingLeftRight" format="dimension" />
+        <attr name="openvpn_pstsScrollOffset" format="dimension" />
+        <attr name="openvpn_pstsTabBackground" format="reference" />
+        <attr name="openvpn_pstsShouldExpand" format="boolean" />
+        <attr name="openvpn_pstsTextAllCaps" format="boolean" />
+        <attr name="openvpn_pstsPaddingMiddle" format="boolean" />
+        <attr name="openvpn_pstsTextStyle">
+            <flag name="normal" value="0x0" />
+            <flag name="bold" value="0x1" />
+            <flag name="italic" value="0x2" />
+        </attr>
+        <attr name="openvpn_pstsTextSelectedStyle">
+            <flag name="normal" value="0x0" />
+            <flag name="bold" value="0x1" />
+            <flag name="italic" value="0x2" />
+        </attr>
+        <attr name="openvpn_pstsTextAlpha" format="float" />
+        <attr name="openvpn_pstsTextSelectedAlpha" format="float" />
+    </declare-styleable>
+</resources>
